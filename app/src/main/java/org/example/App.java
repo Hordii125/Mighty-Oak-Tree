@@ -4,11 +4,24 @@
 package org.example;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Squirrel squirrel1 = new Squirrel("Squirrel A");
+        Squirrel squirrel2= new Squirrel("Squirrel B");
+        Squirrel squirrel3 = new Squirrel("Squirrel C");
+
+        SquirrelNode node1 = new SquirrelNode(squirrel1);
+        SquirrelNode node2 = new SquirrelNode(squirrel2);
+        SquirrelNode node3 = new SquirrelNode(squirrel3);
+
+        node1.setLeft(node2);
+        node1.setRight(node3);
+
+        SquirrelNode retrievedLeft = node1.getLeft();
+        SquirrelNode retrievedRight = node1.getRight();
+
+        System.out.println("The left node is " + retrievedLeft.getSquirrel().getName());
+        System.out.println("The right node is " + retrievedRight.getSquirrel().getName());
+        System.out.println("The root node is " + node1.getSquirrel().getName());
+        
     }
 }
